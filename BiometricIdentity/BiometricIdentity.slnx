@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Biometric.Api/Biometric.Api.csproj" />
+    <Project Path="src/Biometric.Application/Biometric.Application.csproj" />
+    <Project Path="src/Biometric.Domain/Biometric.Domain.csproj" />
+    <Project Path="src/Biometric.Infrastructure/Biometric.Infrastructure.csproj" />
+  </Folder>
+</Solution>
