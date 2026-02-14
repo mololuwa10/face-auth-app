@@ -1,0 +1,16 @@
+services:
+  db:
+    image: pgvector/pgvector:pg17 # Official image with pgvector pre-installed
+    container_name: biometric_db
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: your_secure_password
+      POSTGRES_DB: biometric_identity_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
