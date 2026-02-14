@@ -1,4 +1,5 @@
 using Biometric.Application.Interfaces;
+using Biometric.Application.Services;
 using Biometric.Infrastructure.Persistence;
 using Biometric.Infrastructure.Repositories;
 using Biometric.Infrastructure.Services;
@@ -6,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// 1. DATABASE: Register Neon/Postgres with Vector Support
+// Register Neon/Postgres with Vector Support
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(
         builder.Configuration.GetConnectionString("DefaultConnection"),
@@ -14,7 +15,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     )
 );
 
-// 2. AI CLIENT: Register the HTTP client to talk to your Python AI
+// Register the HTTP client to talk to your Python AI
 builder.Services.AddHttpClient<IFaceAiService, FaceAiClient>(client =>
 {
     // Pulls from User Secrets: "AiService:BaseUrl": "http://localhost:8000/"
@@ -23,13 +24,12 @@ builder.Services.AddHttpClient<IFaceAiService, FaceAiClient>(client =>
     );
 });
 
-// 3. DEPENDENCY INJECTION: Link Interfaces to Implementations
+// Link Interfaces to Implementations
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<EnrollmentService>();
 
-// 4. API INFRASTRUCTURE
-builder.Services.AddControllers(); // Required for AuthController
-builder.Services.AddOpenApi(); // Keeps your Swagger/OpenApi working
+builder.Services.AddControllers();
+builder.Services.AddOpenApi();
 
 var app = builder.Build();
 
@@ -40,6 +40,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.MapControllers(); // This maps your [Route("api/[controller]")] attributes
+app.MapControllers();
 
 app.Run();

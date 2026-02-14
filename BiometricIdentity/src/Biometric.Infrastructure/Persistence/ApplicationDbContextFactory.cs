@@ -1,6 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
-using Microsoft.Extensions.Configuration;
 
 namespace Biometric.Infrastructure.Persistence
 {
@@ -8,17 +7,16 @@ namespace Biometric.Infrastructure.Persistence
     {
         public ApplicationDbContext CreateDbContext(string[] args)
         {
-            IConfigurationRoot configuration = new ConfigurationBuilder()
-                .SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "src/Biometric.Api"))
-                .AddJsonFile("appsettings.json", optional: true)
-                .AddUserSecrets<ApplicationDbContextFactory>() // This pulls from your machine's secrets
-                .Build();
+            DotNetEnv.Env.TraversePath().Load(); // Load from .env file
+            var connectionString = DotNetEnv.Env.GetString("NEON_CONNECTION_STRING");
+
+            if (string.IsNullOrEmpty(connectionString))
+            {
+                throw new Exception("NEON_CONNECTION_STRING not found in .env file!");
+            }
 
             var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
-
-            // We use a dummy string here because migrations only need to know
-            // the PROVIDER (Postgres), not the actual password.
-            optionsBuilder.UseNpgsql("Host=localhost;Database=dummy", x => x.UseVector());
+            optionsBuilder.UseNpgsql(connectionString, x => x.UseVector());
 
             return new ApplicationDbContext(optionsBuilder.Options);
         }

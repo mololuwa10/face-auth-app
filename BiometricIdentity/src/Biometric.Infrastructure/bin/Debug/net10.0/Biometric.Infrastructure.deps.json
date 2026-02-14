@@ -9,6 +9,7 @@
       "Biometric.Infrastructure/1.0.0": {
         "dependencies": {
           "Biometric.Application": "1.0.0",
+          "DotNetEnv": "3.1.1",
           "Microsoft.Extensions.Configuration.FileExtensions": "10.0.3",
           "Microsoft.Extensions.Configuration.Json": "10.0.3",
           "Microsoft.Extensions.Configuration.UserSecrets": "10.0.3",
@@ -18,6 +19,19 @@
         },
         "runtime": {
           "Biometric.Infrastructure.dll": {}
+        }
+      },
+      "DotNetEnv/3.1.1": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration": "10.0.3",
+          "Microsoft.Extensions.Configuration.Abstractions": "10.0.3",
+          "Sprache": "2.3.1"
+        },
+        "runtime": {
+          "lib/netstandard1.3/DotNetEnv.dll": {
+            "assemblyVersion": "3.1.1.0",
+            "fileVersion": "3.1.1.0"
+          }
         }
       },
       "Microsoft.EntityFrameworkCore/10.0.0": {
@@ -357,6 +371,14 @@
           }
         }
       },
+      "Sprache/2.3.1": {
+        "runtime": {
+          "lib/netstandard2.1/Sprache.dll": {
+            "assemblyVersion": "2.3.1.0",
+            "fileVersion": "2.3.1.0"
+          }
+        }
+      },
       "Biometric.Application/1.0.0": {
         "dependencies": {
           "Biometric.Domain": "1.0.0"
@@ -386,6 +408,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "DotNetEnv/3.1.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-o4SqUVCq0pqHF/HYsZk6k22XGIVmvsDVo+Dy7l0ubq9uQ45JkXswrMRJmYvhGLXWFYF0M5OupMonytB+0zvpGQ==",
+      "path": "dotnetenv/3.1.1",
+      "hashPath": "dotnetenv.3.1.1.nupkg.sha512"
     },
     "Microsoft.EntityFrameworkCore/10.0.0": {
       "type": "package",
@@ -582,6 +611,13 @@
       "sha512": "sha512-HVMcglKLOg979w67k8DOvKO+xJvfBHv/GcAgv/fI8alK8zp9oIYJUYP9BSV6n6+3GwkfynAJ77euwow4/c7HoA==",
       "path": "pgvector.entityframeworkcore/0.3.0",
       "hashPath": "pgvector.entityframeworkcore.0.3.0.nupkg.sha512"
+    },
+    "Sprache/2.3.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Q+mXeiTxiUYG3lKYF6TS82/SyB4F2613Q1yXTMwg4jWGHEEVC3yrzHtNcI4B3qnDI0+eJsezGJ0V+cToUytHWw==",
+      "path": "sprache/2.3.1",
+      "hashPath": "sprache.2.3.1.nupkg.sha512"
     },
     "Biometric.Application/1.0.0": {
       "type": "project",
