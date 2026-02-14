@@ -25,8 +25,16 @@ namespace Biometric.Application.Services
             // Call Python AI to extract the 512-d embedding
             var aiResult = await _aiService.ExtractFaceEmbeddingAsync(imageStream, fileName);
 
-            if (!aiResult.Success)
-                throw new Exception("AI Processing failed. Please ensure the photo is clear.");
+            if (
+                !aiResult.Success
+                || aiResult.FaceEmbedding == null
+                || aiResult.FaceEmbedding.Length == 0
+            )
+            {
+                throw new Exception(
+                    "AI Processing failed: The embedding returned was empty. Check if a face was detected."
+                );
+            }
 
             // Create the Domain Entity
             var newUser = new User
