@@ -36,6 +36,8 @@ namespace Biometric.Api.Controller
                     new
                     {
                         user.UserId,
+                        user.FirstName,
+                        user.LastName,
                         user.Email,
                         Message = "Enrollment successful!",
                     }
