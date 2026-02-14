@@ -24,6 +24,16 @@ builder.Services.AddHttpClient<IFaceAiService, FaceAiClient>(client =>
     );
 });
 
+// Add CORS policy
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(
+        "AllowAllOrigins",
+        // "AllowAll",
+        builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()
+    );
+});
+
 // Link Interfaces to Implementations
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<EnrollmentService>();
