@@ -16,6 +16,18 @@ namespace Biometric.Infrastructure.Services
             using var content = new MultipartFormDataContent();
             var streamContent = new StreamContent(imageStream);
 
+            var extension = Path.GetExtension(filename).ToLower();
+            string mimeType = extension switch
+            {
+                ".png" => "image/png",
+                ".gif" => "image/gif",
+                _ => "image/jpeg",
+            };
+
+            streamContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue(
+                mimeType
+            );
+
             // Match the "file" key expected by the API
             content.Add(streamContent, "file", filename);
 
