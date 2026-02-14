@@ -1,3 +1,5 @@
+using Pgvector;
+
 namespace Biometric.Domain.Entities
 {
     public class User
@@ -8,7 +10,7 @@ namespace Biometric.Domain.Entities
         public string? Email { get; set; }
 
         // Mapping to this to 'vector' type in the database
-        public float[]? FaceEmbedding { get; set; }
+        public Vector? FaceEmbedding { get; set; }
 
         // Audit traits
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;

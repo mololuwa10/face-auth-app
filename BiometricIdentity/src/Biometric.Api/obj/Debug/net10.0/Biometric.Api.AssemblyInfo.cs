@@ -10,10 +10,11 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("46a16fba-e81e-4423-9278-9c5e7027f667")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("Biometric.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c28dc62f1964b994885fe082f7f46f0755b81c30")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9ff8a38d5d93733e5bbeaba8301f14434eb54f3b")]
 [assembly: System.Reflection.AssemblyProductAttribute("Biometric.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Biometric.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

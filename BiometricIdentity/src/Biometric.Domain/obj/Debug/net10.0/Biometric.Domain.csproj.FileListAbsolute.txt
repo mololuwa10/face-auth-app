@@ -1,10 +1,12 @@
 C:\Users\molol\OneDrive\Documents\Side Projects\face-auth-app\BiometricIdentity\src\Biometric.Domain\bin\Debug\net10.0\Biometric.Domain.deps.json
 C:\Users\molol\OneDrive\Documents\Side Projects\face-auth-app\BiometricIdentity\src\Biometric.Domain\bin\Debug\net10.0\Biometric.Domain.dll
 C:\Users\molol\OneDrive\Documents\Side Projects\face-auth-app\BiometricIdentity\src\Biometric.Domain\bin\Debug\net10.0\Biometric.Domain.pdb
+C:\Users\molol\OneDrive\Documents\Side Projects\face-auth-app\BiometricIdentity\src\Biometric.Domain\obj\Debug\net10.0\Biometric.Domain.csproj.AssemblyReference.cache
 C:\Users\molol\OneDrive\Documents\Side Projects\face-auth-app\BiometricIdentity\src\Biometric.Domain\obj\Debug\net10.0\Biometric.Domain.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\molol\OneDrive\Documents\Side Projects\face-auth-app\BiometricIdentity\src\Biometric.Domain\obj\Debug\net10.0\Biometric.Domain.AssemblyInfoInputs.cache
 C:\Users\molol\OneDrive\Documents\Side Projects\face-auth-app\BiometricIdentity\src\Biometric.Domain\obj\Debug\net10.0\Biometric.Domain.AssemblyInfo.cs
 C:\Users\molol\OneDrive\Documents\Side Projects\face-auth-app\BiometricIdentity\src\Biometric.Domain\obj\Debug\net10.0\Biometric.Domain.csproj.CoreCompileInputs.cache
+C:\Users\molol\OneDrive\Documents\Side Projects\face-auth-app\BiometricIdentity\src\Biometric.Domain\obj\Debug\net10.0\EFCoreNpgsqlPgvector.cs
 C:\Users\molol\OneDrive\Documents\Side Projects\face-auth-app\BiometricIdentity\src\Biometric.Domain\obj\Debug\net10.0\Biometric.Domain.sourcelink.json
 C:\Users\molol\OneDrive\Documents\Side Projects\face-auth-app\BiometricIdentity\src\Biometric.Domain\obj\Debug\net10.0\Biometric.Domain.dll
 C:\Users\molol\OneDrive\Documents\Side Projects\face-auth-app\BiometricIdentity\src\Biometric.Domain\obj\Debug\net10.0\refint\Biometric.Domain.dll
