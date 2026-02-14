@@ -17,7 +17,7 @@ namespace Biometric.Api.Controller
             IFormFile file
         )
         {
-            // Reliability - Basic Validation
+            // Basic Validation
             if (file == null || file.Length == 0)
                 return BadRequest("No image uploaded.");
 
@@ -43,7 +43,7 @@ namespace Biometric.Api.Controller
             }
             catch (Exception ex)
             {
-                // PILLAR 7: Observability - Log this properly in production!
+                // Log this properly in production!
                 return UnprocessableEntity(new { error = ex.Message });
             }
         }
