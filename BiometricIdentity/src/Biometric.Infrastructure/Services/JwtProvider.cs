@@ -1,13 +1,14 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using Biometric.Application.Interfaces;
 using Biometric.Domain.Entities;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 
 namespace Biometric.Infrastructure.Services
 {
-    public class JwtProvider(IConfiguration configuration)
+    public class JwtProvider(IConfiguration configuration) : IJwtProvider
     {
         public string GenerateToken(User user)
         {
