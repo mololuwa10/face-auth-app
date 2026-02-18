@@ -30,5 +30,15 @@ namespace Biometric.Infrastructure.Repositories
 
         public async Task<User?> GetUserByEmailAsync(string email) =>
             await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
+
+        public async Task<User?> FindBestMatchAsync(float[] queryEmbedding, double threshold = 0.9)
+        {
+            var queryVector = new Vector(queryEmbedding);
+
+            return await _context
+                .Users.Where(u => 1 - u.FaceEmbedding!.CosineDistance(queryVector) >= threshold)
+                .OrderBy(u => u.FaceEmbedding!.CosineDistance(queryVector))
+                .FirstOrDefaultAsync();
+        }
     }
 }
