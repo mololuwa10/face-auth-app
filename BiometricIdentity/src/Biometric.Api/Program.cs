@@ -1,9 +1,12 @@
+using System.Text;
 using Biometric.Application.Interfaces;
 using Biometric.Application.Services;
 using Biometric.Infrastructure.Persistence;
 using Biometric.Infrastructure.Repositories;
 using Biometric.Infrastructure.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -36,12 +39,42 @@ builder.Services.AddCors(options =>
 
 // Link Interfaces to Implementations
 builder.Services.AddScoped<IUserRepository, UserRepository>();
-builder.Services.AddScoped<EnrollmentService>();
 
+// Application Services
+builder.Services.AddScoped<EnrollmentService>();
+builder.Services.AddScoped<AuthenticationService>();
+
+// JWT Provider
+builder.Services.AddScoped<IJwtProvider, JwtProvider>();
+
+builder
+    .Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = builder.Configuration["Jwt:Issuer"],
+            ValidAudience = builder.Configuration["Jwt:Audience"],
+            IssuerSigningKey = new SymmetricSecurityKey(
+                Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]!)
+            ),
+        };
+    });
+
+builder.Services.AddAuthorization();
+
+// CONTROLLERS
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 
 var app = builder.Build();
+
+app.UseAuthentication();
+app.UseAuthorization();
 
 // 5. MIDDLEWARE PIPELINE
 if (app.Environment.IsDevelopment())
