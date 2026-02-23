@@ -9,5 +9,6 @@ namespace Biometric.Application.Interfaces
 
         // Performance optimization: Get only the FaceEmbedding for authentication
         Task<User?> FindNearestMatchAsync(float[] queryEmbedding, double threshold = 0.6);
+        Task<(User? User, double Similarity)> FindBestMatchWithScoreAsync(float[] queryEmbedding);
     }
 }

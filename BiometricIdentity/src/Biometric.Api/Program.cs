@@ -8,14 +8,17 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 
+DotNetEnv.Env.Load();
+
 var builder = WebApplication.CreateBuilder(args);
+
+var connectionString =
+    builder.Configuration.GetConnectionString("DefaultConnection")
+    ?? builder.Configuration["NEON_CONNECTION_STRING"];
 
 // Register Neon/Postgres with Vector Support
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseNpgsql(
-        builder.Configuration.GetConnectionString("DefaultConnection"),
-        npgsqlOptions => npgsqlOptions.UseVector()
-    )
+    options.UseNpgsql(connectionString, npgsqlOptions => npgsqlOptions.UseVector())
 );
 
 // Register the HTTP client to talk to your Python AI
@@ -51,6 +54,12 @@ builder
     .Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
+        var jwtKey = builder.Configuration["Jwt:Key"];
+        if (string.IsNullOrEmpty(jwtKey))
+            throw new Exception(
+                "JWT Key is not configured. Please set it in appsettings.json or User Secrets."
+            );
+
         options.TokenValidationParameters = new TokenValidationParameters
         {
             ValidateIssuer = true,

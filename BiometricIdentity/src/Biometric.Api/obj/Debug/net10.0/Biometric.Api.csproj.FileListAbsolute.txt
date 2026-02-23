@@ -131,3 +131,11 @@ C:\Users\molol\OneDrive\Documents\Side Projects\face-auth-app\BiometricIdentity\
 C:\Users\molol\OneDrive\Documents\Side Projects\face-auth-app\BiometricIdentity\src\Biometric.Api\obj\Debug\net10.0\ref\Biometric.Api.dll
 C:\Users\molol\OneDrive\Documents\Side Projects\face-auth-app\BiometricIdentity\src\Biometric.Api\bin\Debug\net10.0\DotNetEnv.dll
 C:\Users\molol\OneDrive\Documents\Side Projects\face-auth-app\BiometricIdentity\src\Biometric.Api\bin\Debug\net10.0\Sprache.dll
+C:\Users\molol\OneDrive\Documents\Side Projects\face-auth-app\BiometricIdentity\src\Biometric.Api\bin\Debug\net10.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\molol\OneDrive\Documents\Side Projects\face-auth-app\BiometricIdentity\src\Biometric.Api\bin\Debug\net10.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\molol\OneDrive\Documents\Side Projects\face-auth-app\BiometricIdentity\src\Biometric.Api\bin\Debug\net10.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\molol\OneDrive\Documents\Side Projects\face-auth-app\BiometricIdentity\src\Biometric.Api\bin\Debug\net10.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\molol\OneDrive\Documents\Side Projects\face-auth-app\BiometricIdentity\src\Biometric.Api\bin\Debug\net10.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\molol\OneDrive\Documents\Side Projects\face-auth-app\BiometricIdentity\src\Biometric.Api\bin\Debug\net10.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\molol\OneDrive\Documents\Side Projects\face-auth-app\BiometricIdentity\src\Biometric.Api\bin\Debug\net10.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\molol\OneDrive\Documents\Side Projects\face-auth-app\BiometricIdentity\src\Biometric.Api\bin\Debug\net10.0\System.IdentityModel.Tokens.Jwt.dll

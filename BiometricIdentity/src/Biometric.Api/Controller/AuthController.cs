@@ -58,7 +58,7 @@ namespace Biometric.Api.Controller
         }
 
         [HttpPost("login")]
-        [Authorize]
+        [AllowAnonymous]
         public async Task<IActionResult> Login(IFormFile file)
         {
             if (file == null || file.Length == 0)
@@ -68,9 +68,24 @@ namespace Biometric.Api.Controller
             {
                 using var stream = file.OpenReadStream();
 
-                var token = await _authenticationService.LoginWithFaceAsync(stream, file.FileName);
+                var (token, user) = await _authenticationService.LoginWithFaceAsync(
+                    stream,
+                    file.FileName
+                );
 
-                return Ok(new { Token = token, Message = "Login successful!" });
+                return Ok(
+                    new
+                    {
+                        Token = token,
+                        Message = "Login successful!",
+                        User = new
+                        {
+                            user.FirstName,
+                            user.LastName,
+                            user.Email,
+                        },
+                    }
+                );
             }
             catch (Exception ex)
             {

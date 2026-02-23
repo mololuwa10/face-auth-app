@@ -31,14 +31,42 @@ namespace Biometric.Infrastructure.Repositories
         public async Task<User?> GetUserByEmailAsync(string email) =>
             await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
 
-        public async Task<User?> FindBestMatchAsync(float[] queryEmbedding, double threshold = 0.9)
+        public async Task<(User? User, double Similarity)> FindBestMatchWithScoreAsync(
+            float[] queryEmbedding
+        )
         {
             var queryVector = new Vector(queryEmbedding);
 
-            return await _context
-                .Users.Where(u => 1 - u.FaceEmbedding!.CosineDistance(queryVector) >= threshold)
-                .OrderBy(u => u.FaceEmbedding!.CosineDistance(queryVector))
+            var bestMatch = await _context
+                .Users.Select(u => new
+                {
+                    User = u,
+                    Similarity = 1 - u.FaceEmbedding!.CosineDistance(queryVector),
+                })
+                .OrderByDescending(x => x.Similarity)
                 .FirstOrDefaultAsync();
+
+            return (bestMatch?.User, bestMatch?.Similarity ?? 0);
         }
+
+        // public async Task<(User? User, double Similarity)> FindBestMatchWithScoreAsync(
+        //     float[] queryEmbedding
+        // )
+        // {
+        //     var queryVector = new Vector(queryEmbedding);
+
+        //     var bestMatch = await _context
+        //         .Users.Select(u => new
+        //         {
+        //             User = u,
+        //             Distance = u.FaceEmbedding!.CosineDistance(queryVector),
+        //         })
+        //         .OrderByDescending(x => x.Distance)
+        //         .FirstOrDefaultAsync();
+
+        //     double similarity = bestMatch != null ? (1 - (bestMatch.Distance / 2)) : 0;
+
+        //     return (bestMatch?.User, similarity);
+        // }
     }
 }
